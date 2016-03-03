@@ -56,7 +56,7 @@ Footprint.prototype.authorize = function(){
                         message: 'Failed to authenticate token.' + err
                     });
 
-                } else if (/*check if restricted*/) {
+                } else if (self.isRestricted(req.method, req.path, decoded.groups, self.options)) {
 
                     return res.status(403).send({
                         status: 'error',
